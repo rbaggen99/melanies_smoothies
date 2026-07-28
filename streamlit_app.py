@@ -18,9 +18,13 @@ session = cnx.session()
 
 # Convert the Snowpark dataframe to a Pandas Dataframe so we can use the LDC function
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+st.write('My dataframe:', my_dataframe)
+
 pd_df = my_dataframe.to_pandas()
+st.write('My dataframe:', pd_df)
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+st.write('My dataframe:', my_dataframe)
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
     , my_dataframe
