@@ -16,7 +16,7 @@ st.write('The on your smoothie will be:', name_on_order)
 cnx = st.connection("snowflake")
 session = cnx.session()
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
 # Convert the Snowpark dataframe to a Pandas Dataframe so we can use the LDC function
 pd_df = my_dataframe.to_pandas()
